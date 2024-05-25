@@ -1,0 +1,13 @@
+# Author: Dustin Brothers
+# Description:
+#   yaml playbook to setup a raspberry pi with all my stuffs...
+---
+- hosts: all
+  tasks:
+    - include_tasks: ./support/base_setup.yml
+    ############################################################################
+    # Reboot after all setup is complete...
+    - name: Reboot to get group settings to take effect...
+      reboot:
+        msg: "Rebooting machine..."
+      become: true
